@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\AddResult;
 
 class SiteController extends Controller
 {
@@ -60,6 +61,27 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    
+    public function actionForm(){
+        $form_model = new AddResult();
+        if( $form_model->load(Yii::$app->request->post()) ){
+            if( $form_model->validate() ){
+                Yii::$app->session->setFlash('success', 'Данные приняты');
+                return $this->refresh();
+            }else{
+                Yii::$app->session->setFlash('error', 'Ошибка');
+            }
+        }
+        
+
+        
+
+        return $this->render('form', compact('form_model'));
+    }
+
+
+
+
     public function actionLogout()
     {
         Yii::$app->user->logout();

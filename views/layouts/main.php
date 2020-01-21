@@ -16,21 +16,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <div class="container-fluid">
-        <div class = 'row'>
-            <br>
-            <div class = 'content'>
-                <div class = 'col-md-12'>
-                    <?php if(!Yii::$app->user->isGuest): ?>
-                        <a href="<?= \yii\helpers\Url::to(['/site/logout'])?>"><?= Yii::$app->user->identity['username']?> (Выход)</a><br>
-                        <a href="<?= \yii\helpers\Url::to(['/admin/tasks'])?>">Редактировать</a>
-                    <?php else: ?>
-                        <a href="<?= \yii\helpers\Url::to(['/admin/tasks'])?>">Login</a>          
-                    <?php endif;?>
-                </div> 
-            <div>
-            <br>    
-        </div>
-      <?= $content ?>
+       <?= $content ?>
 </div>
 <?php $this->endBody() ?>
 </body>

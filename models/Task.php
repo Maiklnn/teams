@@ -5,12 +5,10 @@ use yii\db\ActiveRecord;
 
 class Task extends ActiveRecord{
     public static function tableName(){
-        return 'tasks';
+        return 'teams';
     }
-   public static function getStatus($status){
+   public static function getTeams(){
         if($status == 1) { $status = 'Выполнена'; } else { $status = 'Невыполнена'; }
         return $status;
     }
-
-
 } 
